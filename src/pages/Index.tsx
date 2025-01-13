@@ -1,33 +1,73 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Download, Send, Github, Linkedin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Download, Send, Github, Linkedin, Menu, X } from "lucide-react";
 import Skills from "@/components/Skills";
 import ProjectCard from "@/components/ProjectCard";
 import ServiceCard from "@/components/ServiceCard";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
 
   const services = [
     { 
-      title: "Mobile App Development",
-      description: "End-to-end mobile app development for iOS and Android using Flutter and React Native. We focus on creating intuitive, high-performance applications that users love.",
-      image: "https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+      title: "App development",
+      mainDescription: "Native Development\nCross-Platform Development\nHybrid App Development",
+      description: "End-to-end mobile app development specializing in native and cross-platform solutions.",
+      image: "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     { 
-      title: "UI/UX Design",
-      description: "Creating beautiful, user-centered designs that enhance user experience and drive engagement. We combine aesthetics with functionality to deliver outstanding results.",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+      title: "Design & prototype",
+      mainDescription: "UI/UX Design\nWireframing & prototyping",
+      description: "Creating intuitive user interfaces and seamless user experiences through careful planning and prototyping.",
+      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     { 
-      title: "Web Development",
-      description: "Full-stack web development using modern technologies like React, Next.js, and Node.js. We build scalable, responsive websites that perform great on all devices.",
-      image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+      title: "Maintenance & Updates",
+      mainDescription: "Bug fixes\nFeature enhancements\nCompatibility updates",
+      description: "Ongoing support and maintenance to keep your applications running smoothly and up-to-date.",
+      image: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     { 
-      title: "Consulting",
-      description: "Expert technical consulting to help you make informed decisions about your technology stack, architecture, and development processes.",
-      image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+      title: "Testing & Quality Assurance",
+      mainDescription: "Performance testing\nUsability testing\nSecurity testing",
+      description: "Comprehensive testing to ensure your application meets the highest standards of quality and security.",
+      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    { 
+      title: "App store deployment",
+      mainDescription: "App store optimization ASO\nPublishing",
+      description: "Expert guidance through the app store submission and optimization process.",
+      image: "https://images.pexels.com/photos/193004/pexels-photo-193004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    { 
+      title: "Specialized app development",
+      mainDescription: "E-commerce apps\nSocial media apps\nGaming apps\nSaaS",
+      description: "Custom development for specific industry needs and specialized applications.",
+      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    { 
+      title: "Integration services",
+      mainDescription: "Third-party services\nWearables",
+      description: "Seamless integration with third-party services and wearable devices.",
+      image: "https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    },
+    { 
+      title: "Back end development",
+      mainDescription: "API Integration\nData base Technologies",
+      description: "Robust backend solutions with modern database technologies and API integration.",
+      image: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
   ];
 
@@ -63,129 +103,32 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <motion.nav 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-white/10"
-      >
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex space-x-6">
-            <a href="#home" className="nav-link">Home</a>
-            <a href="#services" className="nav-link">Services</a>
-            <a href="#skills" className="nav-link">Skills</a>
-            <a href="#projects" className="nav-link">Projects</a>
-          </div>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="btn-primary flex items-center space-x-2"
-          >
-            <span>Hire me</span>
-          </motion.button>
-        </div>
-      </motion.nav>
-
-      {/* Hero Section */}
-      <motion.section 
-        id="home" 
-        className="pt-32 pb-20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0, y: 60 },
-          visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: { duration: 0.6, ease: "easeOut" }
-          }
-        }}
-      >
-        <div className="container mx-auto px-6">
-          <motion.div className="text-center">
-            <motion.h1 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              className="text-5xl md:text-7xl font-bold mb-6"
-            >
-              Hi! I'm Darlene
-            </motion.h1>
-            <motion.h2 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              className="text-3xl md:text-5xl font-bold text-primary mb-8"
-            >
-              MOBILE DEVELOPER
-            </motion.h2>
-            <motion.p 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              className="text-lg text-foreground/70 max-w-2xl mx-auto mb-12"
-            >
-              Welcome to my portfolio website. I am a highly skilled mobile developer specializing in
-              Flutter & dart. Designing, developing and deploying high-performance, user-friendly cross-
-              platform mobile applications for both iOS and Android.
-            </motion.p>
-            <motion.button 
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary flex items-center space-x-2 mx-auto"
-            >
-              <Download className="w-5 h-5" />
-              <span>Download CV</span>
-            </motion.button>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Skills Section */}
-      <Skills />
-
+      <Navigation />
+      <Hero />
+      
       {/* Services Section */}
       <motion.section 
         id="services" 
         className="py-20 bg-secondary/20"
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 }
-          }
-        }}
+        transition={{ duration: 0.6 }}
       >
         <div className="container mx-auto px-6">
           <motion.h2 
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="section-title text-center"
           >
             Services
           </motion.h2>
           <motion.div 
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 }
-              }
-            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {services.map((service, index) => (
@@ -195,39 +138,32 @@ const Index = () => {
         </div>
       </motion.section>
 
+      {/* Skills Section */}
+      <Skills />
+
       {/* Projects Section */}
       <motion.section 
         id="projects" 
         className="py-20"
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 }
-          }
-        }}
+        transition={{ duration: 0.6 }}
       >
         <div className="container mx-auto px-6">
           <motion.h2 
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="section-title text-center"
           >
             Projects
           </motion.h2>
           <motion.div 
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 }
-              }
-            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {projects.map((project, index) => (
@@ -238,85 +174,7 @@ const Index = () => {
       </motion.section>
 
       {/* Contact Section */}
-      <motion.section 
-        id="contact" 
-        className="py-20"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          hidden: { opacity: 0, y: 20 },
-          visible: { opacity: 1, y: 0 }
-        }}
-      >
-        <div className="container mx-auto px-6">
-          <motion.h2 
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
-            className="section-title text-center"
-          >
-            Contact
-          </motion.h2>
-          <motion.div 
-            variants={{
-              hidden: { opacity: 0, scale: 0.8 },
-              visible: { opacity: 1, scale: 1 }
-            }}
-            className="max-w-2xl mx-auto"
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="glass-card p-3 w-full focus:outline-none focus:border-primary"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="glass-card p-3 w-full focus:outline-none focus:border-primary"
-                />
-              </div>
-              <input
-                type="email"
-                placeholder="Email"
-                className="glass-card p-3 w-full focus:outline-none focus:border-primary"
-              />
-              <textarea
-                placeholder="Message"
-                rows={6}
-                className="glass-card p-3 w-full focus:outline-none focus:border-primary"
-              />
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-primary w-full flex items-center justify-center space-x-2"
-              >
-                <Send className="w-5 h-5" />
-                <span>{isSubmitting ? "Sending..." : "Send message"}</span>
-              </motion.button>
-            </form>
-            <motion.div 
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-              className="flex justify-center space-x-6 mt-12"
-            >
-              <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="#" className="text-foreground/70 hover:text-primary transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+      <Contact />
     </div>
   );
 };

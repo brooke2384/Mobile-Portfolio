@@ -25,7 +25,7 @@ export default {
         background: "#0A0A0A",
         foreground: "#FFFFFF",
         primary: {
-          DEFAULT: "#9B87F5",
+          DEFAULT: "#9b87f5",
           foreground: "#FFFFFF",
         },
         secondary: {
@@ -34,6 +34,10 @@ export default {
         },
         card: {
           DEFAULT: "rgba(42, 42, 42, 0.5)",
+          foreground: "#FFFFFF",
+        },
+        accent: {
+          DEFAULT: "#ea384c",
           foreground: "#FFFFFF",
         },
       },
@@ -56,10 +60,25 @@ export default {
             opacity: "1",
           },
         },
+        "scale-up": {
+          "0%": {
+            transform: "scale(0.95)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
+        "scale-up": "scale-up 0.3s ease-out",
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
