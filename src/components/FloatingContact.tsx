@@ -25,8 +25,8 @@ const FloatingContact = () => {
         >
           <h3 className="text-lg font-semibold mb-2">Contact Me</h3>
           <p className="text-sm mb-4">Feel free to reach out!</p>
-          <a href="mailto:contact@example.com" className="text-primary hover:text-accent">
-            contact@example.com
+          <a href="mailto:dbellis.tech@gmail.com" className="text-primary hover:text-accent">
+            dbellis.tech@gmail.com
           </a>
         </motion.div>
       )}
