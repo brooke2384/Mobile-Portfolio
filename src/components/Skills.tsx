@@ -3,24 +3,25 @@ import { Tag } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 const skills = [
-  {
-    category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    gradient: "from-[#FF6B6B] to-[#FFE66D]"
-  },
-  {
+   {
     category: "Mobile",
-    items: ["Flutter", "React Native", "iOS", "Android"],
+    items: ["Flutter", "React Native", "iOS", "Android", "Kotlin", "Dart", "Swift", "Firebase"],
     gradient: "from-[#4834D4] to-[#686DE0]"
   },
   {
+    category: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CSS-in-JS", "Progressive Web Apps"],
+    gradient: "from-[#FF6B6B] to-[#FFE66D]"
+  },
+ 
+  {
     category: "Backend",
-    items: ["Node.js", "Python", "Java", "SQL"],
+    items: ["Node.js", "SQL", "GraphQL", "RESTful APIs"],
     gradient: "from-[#6AB04C] to-[#BADC58]"
   },
   {
     category: "Tools",
-    items: ["Git", "Docker", "AWS", "Firebase"],
+    items: ["Git", "Docker", "Firebase", "Jenkins", "GitHub Actions", ],
     gradient: "from-[#EB4D4B] to-[#FF7979]"
   }
 ];
@@ -28,6 +29,7 @@ const skills = [
 const Skills = () => {
   return (
     <motion.section
+      id="skills"  // Add the id to link to this section
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
