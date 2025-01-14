@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Tag } from "lucide-react";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 const skills = [
-   {
+  {
     category: "Mobile",
     items: ["Flutter", "React Native", "iOS", "Android", "Kotlin", "Dart", "Swift", "Firebase"],
     gradient: "from-[#4834D4] to-[#686DE0]"
@@ -13,7 +12,6 @@ const skills = [
     items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CSS-in-JS", "Progressive Web Apps"],
     gradient: "from-[#FF6B6B] to-[#FFE66D]"
   },
- 
   {
     category: "Backend",
     items: ["Node.js", "SQL", "GraphQL", "RESTful APIs"],
@@ -21,7 +19,7 @@ const skills = [
   },
   {
     category: "Tools",
-    items: ["Git", "Docker", "Firebase", "Jenkins", "GitHub Actions", ],
+    items: ["Git", "Docker", "Firebase", "Jenkins", "GitHub Actions"],
     gradient: "from-[#EB4D4B] to-[#FF7979]"
   }
 ];
@@ -60,31 +58,18 @@ const Skills = () => {
                 hidden: { opacity: 0, scale: 0.8 },
                 visible: { opacity: 1, scale: 1 }
               }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{
+                scale: 1.05, 
+                transition: { type: "spring", stiffness: 300, damping: 20 }
+              }}
               className="glass-card p-6"
             >
-              <HoverCard>
-                <HoverCardTrigger>
-                  <div className="flex items-center gap-2 mb-4">
-                    <Tag className={`w-5 h-5 bg-gradient-to-r ${skillGroup.gradient} rounded-full p-1`} />
-                    <h3 className={`text-xl font-semibold bg-gradient-to-r ${skillGroup.gradient} text-transparent bg-clip-text`}>
-                      {skillGroup.category}
-                    </h3>
-                  </div>
-                </HoverCardTrigger>
-                <HoverCardContent className="w-80">
-                  <div className="flex flex-wrap gap-2">
-                    {skillGroup.items.map((skill, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 bg-primary/10 rounded-full text-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
+              <div className="flex items-center gap-2 mb-4">
+                <Tag className={`w-5 h-5 bg-gradient-to-r ${skillGroup.gradient} rounded-full p-1`} />
+                <h3 className={`text-xl font-semibold bg-gradient-to-r ${skillGroup.gradient} text-transparent bg-clip-text`}>
+                  {skillGroup.category}
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skillGroup.items.map((skill, idx) => (
                   <span
