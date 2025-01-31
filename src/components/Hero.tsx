@@ -65,8 +65,8 @@ const Hero = () => {
             I have a proven track record of enhancing app efficiency, user engagement, and reliability.
           </motion.p>
           <motion.a
-            href="/DB-CV.pdf"
-            download="DB-CV.pdf"
+            href="/DB CV.pdf"
+            download="DB CV.pdf"
             whileHover={{
               scale: 1.05,
               background: "linear-gradient(to right, #ea384c, #9b87f5)",
