@@ -35,7 +35,7 @@ const Skills = () => {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
       }}
-      className="py-20"
+      className="py-20 bg-gray-950"
     >
       <div className="container mx-auto px-6">
         <motion.h2

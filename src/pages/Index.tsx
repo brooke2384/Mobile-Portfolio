@@ -136,7 +136,7 @@ const Index = () => {
         <Hero />
 
         {/* Services Section */}
-        <motion.section id="services" className="py-20 bg-secondary/20">
+        <motion.section id="services" className="py-20 bg-gray-950">
           <div className="container mx-auto px-6">
             <h2 className="section-title text-center">Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -177,9 +177,15 @@ const Index = () => {
                     <Button onClick={() => window.open(project.liveUrl, "_blank")}>Live</Button>
                     <Button onClick={() => window.open(project.githubUrl, "_blank")} variant="outline">GitHub</Button>
                   </div>
+                
                 </motion.div>
               ))}
             </div>
+          </div>
+          <div className="mt-12 text-center">
+              <Button onClick={() => window.location.href = '/projects'} className="btn-primary inline-flex items-center gap-2">
+                View More Projects <ArrowRight className="w-4 h-4" />
+              </Button>
           </div>
         </motion.section>
 

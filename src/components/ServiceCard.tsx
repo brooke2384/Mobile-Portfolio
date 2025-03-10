@@ -14,7 +14,7 @@ const ServiceCard = ({ title, mainDescription, description, image }: ServiceCard
       whileHover={{ scale: 1.02 }}
       className="relative h-[300px] sm:h-[350px] rounded-xl overflow-hidden cursor-pointer group"
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-gray-950">
         <img
           src={image}
           alt={title}

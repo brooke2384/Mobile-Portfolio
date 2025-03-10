@@ -37,7 +37,7 @@ const Contact = () => {
   return (
     <motion.section 
       id="contact" 
-      className="py-20"
+      className="py-20 bg-gray-950"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
