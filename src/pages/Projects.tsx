@@ -3,52 +3,83 @@ import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 const Projects = () => {
   const navigate = useNavigate();
+  
   const projects = [
     {
-      title: "Restaurant App",
-      description: "A modern restaurant management application",
-      image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://restaurant-app.com",
-      githubUrl: "https://github.com/username/restaurant-app"
+      title: "MindSync – AI Mental Health Companion",
+      description: "AI-driven mental health tracking with voice-to-text, NLP insights, and mood visualization.",
+      image: "https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "E-commerce App",
-      description: "Full-featured e-commerce platform",
-      image: "https://images.pexels.com/photos/934064/pexels-photo-934064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://ecommerce-app.com",
-      githubUrl: "https://github.com/username/ecommerce-app"
+      title: "Seamless Mobile Commerce",
+      description: "Mobile-first e-commerce with secure payments and real-time order tracking.",
+      image: "https://images.pexels.com/photos/1343749/pexels-photo-1343749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "Doctor Appointment App",
-      description: "Healthcare appointment scheduling system",
-      image: "https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://doctor-app.com",
-      githubUrl: "https://github.com/username/doctor-app"
+      title: "EcoTrade – Sustainable Tech Marketplace",
+      description: "Marketplace for refurbished tech, e-waste recycling, and sustainable gadgets.",
+      image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "Social Media Dashboard",
-      description: "Analytics and management platform for social media",
-      image: "https://images.pexels.com/photos/35177/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://social-dashboard.com",
-      githubUrl: "https://github.com/username/social-dashboard"
+      title: "QuickAssist – Emergency Response Platform",
+      description: "Instant emergency alerts with cloud-based real-time assistance.",
+      image: "https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "Task Management App",
-      description: "Collaborative task and project management tool",
-      image: "https://images.pexels.com/photos/3243/pen-calendar-to-do-checklist.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://task-app.com",
-      githubUrl: "https://github.com/username/task-app"
+      title: "EduSync – AI-Powered Learning Hub",
+      description: "Personalized learning recommendations with AI-driven progress tracking.",
+      image: "https://images.pexels.com/photos/4144225/pexels-photo-4144225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     },
     {
-      title: "Weather Forecast App",
-      description: "Real-time weather updates and forecasts",
-      image: "https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      liveUrl: "https://weather-app.com",
-      githubUrl: "https://github.com/username/weather-app"
+      title: "HealthMate – Digital Health Tracker",
+      description: "Monitor vitals, track health goals, and sync medical records in one app.",
+      image: "https://images.pexels.com/photos/7089026/pexels-photo-7089026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      title: "TravelEase – Smart Trip Planner",
+      description: "AI-powered travel assistant with smart itinerary planning and budget tracking.",
+      image: "https://images.pexels.com/photos/8084655/pexels-photo-8084655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      title: "HomeFit – Virtual Fitness App",
+      description: "Workout sessions with real-time tracking, AI coaching, and health insights.",
+      image: "https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      title: "WorkSphere – Micro-Work Platform",
+      description: "Freelance gigs, skill verification, and job success scores for global users.",
+      image: "https://images.pexels.com/photos/3182834/pexels-photo-3182834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      title: "SmartWallet – Fintech Budgeting App",
+      description: "AI-based spending insights, savings goals, and investment tracking.",
+      image: "https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      liveUrl: "#",
+      githubUrl: "#"
     }
   ];
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -58,17 +89,12 @@ const Projects = () => {
     >
       <div className="container mx-auto">
         <div className="flex items-center mb-8">
-          <Button 
-            variant="ghost" 
-            className="mr-4"
-            onClick={() => navigate(-1)}
-          >
-            <ArrowLeft className="mr-2" />
-            Back
+          <Button variant="ghost" className="mr-4" onClick={() => navigate(-1)}>
+            <ArrowLeft className="mr-2" /> Back
           </Button>
           <h1 className="text-4xl font-bold">All Projects</h1>
         </div>
-        
+
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 20 }}
@@ -83,4 +109,5 @@ const Projects = () => {
     </motion.div>
   );
 };
+
 export default Projects;

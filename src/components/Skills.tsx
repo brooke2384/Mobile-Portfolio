@@ -9,7 +9,7 @@ const skills = [
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CSS-in-JS", "Progressive Web Apps"],
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "CSS-in-JS", "PWA"],
     gradient: "from-[#FF6B6B] to-[#FFE66D]"
   },
   {
@@ -27,16 +27,13 @@ const skills = [
 const Skills = () => {
   return (
     <motion.section
-      id="skills"  // Add the id to link to this section
+      id="skills"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={{
         hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: { staggerChildren: 0.2 }
-        }
+        visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
       }}
       className="py-20"
     >
