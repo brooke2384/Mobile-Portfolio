@@ -228,6 +228,19 @@ const Contact = () => {
                   <InlineWidget 
                     url="https://calendly.com/dbellis-tech/30min" 
                     styles={{ height: '100%', width: '100%' }}
+                    prefill={{
+                      email: "",
+                      firstName: "",
+                      lastName: "",
+                      name: ""
+                    }}
+                    pageSettings={{
+                      backgroundColor: 'transparent',
+                      hideEventTypeDetails: false,
+                      hideLandingPageDetails: false,
+                      primaryColor: '#9b87f5',
+                      textColor: '#ffffff'
+                    }}
                   />
                 </div>
               </motion.div>
