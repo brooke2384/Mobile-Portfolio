@@ -14,7 +14,14 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card backdrop-blur-md border border-white/10 rounded-lg transition-all duration-300;
+    @apply bg-card/80 backdrop-blur-md border border-white/10 rounded-lg transition-all duration-300 hover:border-primary/20 dark:hover:border-primary/20 shadow-sm;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .neomorphic-card {
+    @apply bg-card rounded-lg transition-all duration-300 hover:shadow-lg;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), 
+                -8px -8px 16px rgba(255, 255, 255, 0.03);
   }
   
   .nav-link {
@@ -44,4 +51,34 @@
 
 .project-card img {
   @apply w-full h-48 object-cover;
+}
+
+/* Glassmorphism effects */
+.glassmorphism {
+  @apply bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Neumorphism effects */
+.neumorphism-light {
+  background: #f0f0f3;
+  box-shadow: 10px 10px 20px #d1d1d4, -10px -10px 20px #ffffff;
+}
+
+.neumorphism-dark {
+  background: #1a1a1a;
+  box-shadow: 10px 10px 20px #0a0a0a, -10px -10px 20px #2a2a2a;
+}
+
+/* Material Design 3 inspired elevation */
+.elevation-1 {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.elevation-2 {
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.elevation-3 {
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
 }

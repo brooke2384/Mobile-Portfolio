@@ -1,16 +1,25 @@
-import { motion } from "framer-motion";
-import { Download } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Download, ArrowDown } from "lucide-react";
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 300], [1, 0.9]);
+  const y = useTransform(scrollY, [0, 300], [0, 100]);
   return (
     <motion.section
       id="home"
-      className="pt-32 pb-20"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      className="pt-32 pb-20 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
     >
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-1/4 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-accent/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/3 w-40 h-40 bg-purple-500/10 rounded-full filter blur-2xl"></div>
+      </div>
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center"
@@ -35,7 +44,7 @@ const Hero = () => {
             }}
             transition={{ duration: 0.8 }}
           >
-            I Build Experiences, Not Just Apps.
+            Building High-Performance Mobile Apps | Flutter Developer
           </motion.h1>
 
           <motion.h2
@@ -64,8 +73,7 @@ const Hero = () => {
 
           <div className="flex justify-center gap-6">
             <motion.a
-              href="/DB CV.pdf"
-              download="DB CV.pdf"
+              href="#contact"
               whileHover={{
                 scale: 1.05,
                 background: "linear-gradient(to right, #ea384c, #9b87f5)",
@@ -78,17 +86,18 @@ const Hero = () => {
                 boxShadow: "0px 5px 15px rgba(155, 135, 245, 0.3)",
               }}
             >
-              <Download className="w-5 h-5" />
-              <span>Get My Resume</span>
+              <span>Let's Build Something Great – Contact Me</span>
             </motion.a>
 
             <motion.a
-              href="#projects"
+              href="/DB CV.pdf"
+              download="DB CV.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-xl text-primary border border-primary font-semibold tracking-wide"
+              className="px-6 py-3 rounded-xl text-primary border border-primary font-semibold tracking-wide flex items-center space-x-2"
             >
-              Explore My Craft
+              <Download className="w-5 h-5" />
+              <span>Get My Resume</span>
             </motion.a>
           </div>
         </motion.div>

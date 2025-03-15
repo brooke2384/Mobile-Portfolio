@@ -22,7 +22,7 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="hidden md:flex space-x-6">
-          {["home", "services", "skills", "projects"].map((section) => (
+          {["home", "about", "services", "skills", "projects"].map((section) => (
             <motion.a
               key={section}
               whileHover={{ 
@@ -50,17 +50,19 @@ const Navigation = () => {
           </motion.button>
         </div>
 
-        <motion.button 
-          whileHover={{ 
-            scale: 1.05,
-            background: "linear-gradient(to right, #ea384c, #9b87f5)",
-          }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => scrollToSection('contact')}
-          className="btn-primary flex items-center space-x-2"
-        >
-          <span>Hire me</span>
-        </motion.button>
+        <div className="flex items-center">
+          <motion.button 
+            whileHover={{ 
+              scale: 1.05,
+              background: "linear-gradient(to right, #ea384c, #9b87f5)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection('contact')}
+            className="btn-primary flex items-center space-x-2"
+          >
+            <span>Hire me</span>
+          </motion.button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -72,7 +74,7 @@ const Navigation = () => {
             className="md:hidden bg-background/95 border-t border-white/10"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
-              {["home", "services", "skills", "projects"].map((section) => (
+              {["home", "about", "services", "skills", "projects"].map((section) => (
                 <motion.a
                   key={section}
                   whileHover={{ 
