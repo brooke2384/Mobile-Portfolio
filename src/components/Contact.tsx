@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Github, Linkedin, Download, Calendar, Copy, ExternalLink } from "lucide-react";
 import emailjs from "emailjs-com";
 import { useToast } from "@/hooks/use-toast";
-import { InlineWidget } from "react-calendly";
+// Lazy load Calendly widget
+const InlineWidget = lazy(() => import("react-calendly").then(module => ({ default: module.InlineWidget })));
 import { useMediaQuery } from "@/hooks/use-mobile";
 
 const Contact = () => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Skills from "@/components/Skills";
@@ -6,7 +6,8 @@ import ServiceCard from "@/components/ServiceCard";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import AboutMe from "@/components/AboutMe";
-import Contact from "@/components/Contact";
+// Lazy load non-critical components
+const Contact = lazy(() => import("@/components/Contact"));
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import FloatingContact from "@/components/FloatingContact";
@@ -164,7 +165,9 @@ const Index = () => {
           </div>
         </motion.section>
 
-        <Contact />
+        <Suspense fallback={<div className="py-20 bg-gray-950"><div className="container mx-auto px-6 text-center">Loading contact section...</div></div>}>
+          <Contact />
+        </Suspense>
       </motion.div>
 
       <BackToTop />

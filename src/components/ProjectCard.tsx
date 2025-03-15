@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Link } from "lucide-react";
 import { Button } from "./ui/button";
+import OptimizedImage from "./OptimizedImage";
 
 interface ProjectCardProps {
   title: string;
@@ -16,7 +17,14 @@ const ProjectCard = ({ title, description, image, liveUrl, githubUrl }: ProjectC
       whileHover={{ scale: 1.02 }}
       className="project-card group relative overflow-hidden"
     >
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <OptimizedImage 
+        src={image} 
+        alt={title} 
+        className="w-full h-48" 
+        objectFit="cover"
+        width={400}
+        height={192}
+      />
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-foreground/70">{description}</p>

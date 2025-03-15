@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Link, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
+import OptimizedImage from "./OptimizedImage";
 
 interface EnhancedProjectCardProps {
   title: string;
@@ -35,10 +36,13 @@ const EnhancedProjectCard = ({
       style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.15)" }}
     >
       <div className="relative overflow-hidden group">
-        <img 
+        <OptimizedImage 
           src={image} 
           alt={title} 
-          className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110" 
+          className="w-full h-56 transition-transform duration-500 group-hover:scale-110"
+          objectFit="cover"
+          width={400}
+          height={224}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-4">
           <div className="flex gap-2">
