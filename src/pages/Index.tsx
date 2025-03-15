@@ -1,19 +1,20 @@
 import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Skills from "@/components/Skills";
-import ServiceCard from "@/components/ServiceCard";
-import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import Navigation from "@/components/Navigation";
 import AboutMe from "@/components/AboutMe";
-// Lazy load non-critical components
-const Contact = lazy(() => import("@/components/Contact"));
 import ScrollProgress from "@/components/ScrollProgress";
-import BackToTop from "@/components/BackToTop";
-import FloatingContact from "@/components/FloatingContact";
 import CustomCursor from "@/components/CustomCursor";
-import EnhancedProjectCard from "@/components/EnhancedProjectCard";
 import { ArrowRight } from "lucide-react";
+
+// Lazy load non-critical components
+const Skills = lazy(() => import("@/components/Skills"));
+const ServiceCard = lazy(() => import("@/components/ServiceCard"));
+const Contact = lazy(() => import("@/components/Contact"));
+const BackToTop = lazy(() => import("@/components/BackToTop"));
+const FloatingContact = lazy(() => import("@/components/FloatingContact"));
+const EnhancedProjectCard = lazy(() => import("@/components/EnhancedProjectCard"));
 
 const services = [
   {
@@ -135,15 +136,19 @@ const Index = () => {
           <div className="container mx-auto px-6">
             <h2 className="section-title text-center">Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service, index) => (
-                <ServiceCard key={index} {...service} />
-              ))}
+              <Suspense fallback={<div className="py-10 text-center">Loading services...</div>}>
+                {services.map((service, index) => (
+                  <ServiceCard key={index} {...service} />
+                ))}
+              </Suspense>
             </div>
           </div>
         </motion.section>
 
         {/* Skills Section */}
-        <Skills />
+        <Suspense fallback={<div className="py-20 bg-gray-950"><div className="container mx-auto px-6 text-center">Loading skills section...</div></div>}>
+          <Skills />
+        </Suspense>
 
         {/* Projects Section */}
         <motion.section id="projects" className="py-20 bg-gray-950">
@@ -152,11 +157,13 @@ const Index = () => {
             <p className="text-xl text-center text-foreground/80 max-w-3xl mx-auto mb-12">
               Explore my case studies showcasing high-performance mobile applications built with Flutter and Firebase.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <EnhancedProjectCard key={index} {...project} />
-              ))}
-            </div>
+            <Suspense fallback={<div className="py-10 text-center">Loading projects...</div>}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((project, index) => (
+                  <EnhancedProjectCard key={index} {...project} />
+                ))}
+              </div>
+            </Suspense>
           </div>
           <div className="mt-12 text-center">
               <Button onClick={() => window.location.href = '/projects'} className="btn-primary inline-flex items-center gap-2">
@@ -170,8 +177,12 @@ const Index = () => {
         </Suspense>
       </motion.div>
 
-      <BackToTop />
-      <FloatingContact />
+      <Suspense fallback={<div></div>}>
+        <BackToTop />
+      </Suspense>
+      <Suspense fallback={<div></div>}>
+        <FloatingContact />
+      </Suspense>
     </motion.div>
   );
 };

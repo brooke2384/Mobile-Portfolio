@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import OptimizedImage from "./OptimizedImage";
+import EnhancedOptimizedImage from "./EnhancedOptimizedImage";
 
 interface ServiceCardProps {
   title: string;
@@ -16,11 +16,15 @@ const ServiceCard = ({ title, mainDescription, description, image }: ServiceCard
       className="relative h-[300px] sm:h-[350px] rounded-xl overflow-hidden cursor-pointer group"
     >
       <div className="absolute inset-0 bg-gray-950">
-        <OptimizedImage
+        <EnhancedOptimizedImage
           src={image}
           alt={title}
           className="w-full h-full"
           objectFit="cover"
+          width={400}
+          height={300}
+          quality={85}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
         <div className="absolute inset-0 bg-black/60 transition-opacity group-hover:bg-black/70" />
       </div>
